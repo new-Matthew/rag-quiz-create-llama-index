@@ -1,0 +1,8 @@
+fastapi[standard]
+llama-index-embeddings-ollama>=0.2.0
+llama-index-readers-remote-depth>=0.1.4
+llama-index-readers-file>=0.1.33
+llama-index-llms-ollama>=0.2.2
+llama-index-llms-llama-cpp>=0.2.0
+llama-index-core>=0.11.0,<0.12.0
+
