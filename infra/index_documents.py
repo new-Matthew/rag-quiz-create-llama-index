@@ -5,10 +5,22 @@ class Index:
 
     def index_documents(documents):
 
+        EXTRACT_CONTEXT_PROMPT = (
+            "Given the contents of the following documents, summarize the key topics and generate additional relevant "
+            "information that would help in understanding the document better."
+        )
+
+        index = VectorStoreIndex.from_documents(documents)
+
+ 
+        context_response = index.as_query_engine(temperature=0.5).query(EXTRACT_CONTEXT_PROMPT).response
+        print(context_response)
+
+  
         GENERATE_2_QUESTIONS_PROMPT = (
-            'Its only role is to generate 2 questions, in json format, based on the content of the uploaded files. '
-            'Both the values of the statement, the alternatives and explanations of the answers must be in Portuguese. '
-            'Instructions for the fields that must be in json:'
+            f"Based on the following content: {context_response}, generate 2 questions in Portuguese, in JSON format. "
+            "The questions should be objective and include the question statement, alternatives, and correct answers. "
+            "The format should be as follows: "
             '{'
                 '"question_1": {'
                     '"question_statement": "<fill_with_question_statement>", '
@@ -35,11 +47,10 @@ class Index:
             '}'
         )
 
-        index = VectorStoreIndex.from_documents(documents)
+        # Step 4: Query again to generate the quiz based on the relevant content
+        quiz_response = index.as_query_engine(temperature=0.0).query(GENERATE_2_QUESTIONS_PROMPT).response
 
-        response_quiz = index.as_query_engine().query(GENERATE_2_QUESTIONS_PROMPT).response
-        print(response_quiz)
-        return json.loads(response_quiz)
+        return json.loads(quiz_response)
         
 
         
