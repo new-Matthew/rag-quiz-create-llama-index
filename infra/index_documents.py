@@ -6,6 +6,7 @@ class Index:
     def index_documents(documents):
 
         EXTRACT_CONTEXT_PROMPT = (
+            "In all responses and interpretations, assume that the context is always related to programming, software development, or computer science."
             "Given the contents of the following documents, summarize the key topics and generate additional relevant "
             "information that would help in understanding the document better."
         )
@@ -13,12 +14,13 @@ class Index:
         index = VectorStoreIndex.from_documents(documents)
 
  
-        context_response = index.as_query_engine(temperature=0.5).query(EXTRACT_CONTEXT_PROMPT).response
+        context_response = index.as_query_engine(temperature=1).query(EXTRACT_CONTEXT_PROMPT).response
         print(context_response)
 
   
         GENERATE_2_QUESTIONS_PROMPT = (
-            f"Based on the following content: {context_response}, generate 2 questions in Portuguese, in JSON format. "
+            f"In all responses and interpretations, assume that the context is always related to programming, software development, or computer science."
+            "Based on the following content: {context_response}, generate 2 questions in Portuguese, in JSON format. "
             "The questions should be objective and include the question statement, alternatives, and correct answers. "
             "The format should be as follows: "
             '{'
