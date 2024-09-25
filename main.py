@@ -9,5 +9,5 @@ app = FastAPI()
 
 app.include_router(generate_quiz.router)
 
-Settings.llm = Ollama(model="llama3.1:8b-instruct-q2_K", temperature=0.1, request_timeout=60*60, json_mode=True)
+Settings.llm = Ollama(model="llama3.1", temperature=1, request_timeout=60*60, json_mode=True)
 Settings.embed_model = OllamaEmbedding(model_name="nomic-embed-text")
