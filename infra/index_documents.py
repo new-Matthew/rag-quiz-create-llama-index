@@ -6,24 +6,29 @@ class Index:
     def index_documents(documents):
 
         EXTRACT_CONTEXT_PROMPT = (
-            "In all responses and interpretations, assume that the context is always related to programming, software development, or computer science."
-            "Given the contents of the following documents, summarize the key topics and generate additional relevant "
-            "information that would help in understanding the document better."
+            "Assume that the context is always related to programming, software development, or computer science. "
+            "Given the content of the following documents, summarize the key technical topics and expand with additional information "
+            ""
         )
 
         index = VectorStoreIndex.from_documents(documents)
 
  
-        context_response = index.as_query_engine(temperature=1).query(EXTRACT_CONTEXT_PROMPT).response
+        context_response = index.as_query_engine(temperature=0.5).query(EXTRACT_CONTEXT_PROMPT).response
         print(context_response)
 
   
         GENERATE_2_QUESTIONS_PROMPT = (
-            f"In all responses and interpretations, assume that the context is always related to programming, software development, or computer science."
-            "Based on the following content: {context_response}, generate 2 questions in Portuguese, in JSON format. "
-            "The questions should be objective and include the question statement, alternatives, and correct answers. "
-            "The format should be as follows: "
-            '{'
+            f"Assume that the context is always related to programming, software development, or computer science. "
+            "Based on the following content: {context_response}, generate 2 multiple-choice questions in Portuguese, in JSON format. "
+            "Each question should be technical and designed to test understanding in programming or computer science. "
+            "Provide: "
+            "1. A question statement "
+            "2. Four answer alternatives (a, b, c, d), ensuring only one correct answer "
+            "3. The index of the correct alternative (a, b, c, or d) "
+            "4. A brief explanation of why the selected answer is correct."
+            "The JSON format should be as follows: "
+            "{"
                 '"question_1": {'
                     '"question_statement": "<fill_with_question_statement>", '
                     '"alternatives": {'
@@ -50,7 +55,7 @@ class Index:
         )
 
         # Step 4: Query again to generate the quiz based on the relevant content
-        quiz_response = index.as_query_engine(temperature=0.0).query(GENERATE_2_QUESTIONS_PROMPT).response
+        quiz_response = index.as_query_engine(temperature=0.2).query(GENERATE_2_QUESTIONS_PROMPT).response
 
         return json.loads(quiz_response)
         
