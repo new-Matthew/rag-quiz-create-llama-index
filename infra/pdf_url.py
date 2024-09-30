@@ -2,7 +2,7 @@ url_list = [
         # "https://squad7.s3.amazonaws.com/12.pdf", # fazer de 3 em 3
         #"https://squad7.s3.amazonaws.com/MiniMundoOS.pdf",
         #"https://squad7.s3.amazonaws.com/2.pdf",
-        #"https://squad7.s3.amazonaws.com/Minimundo.pdf",
+        "https://squad7.s3.amazonaws.com/Minimundo.pdf",
         #"https://squad7.s3.amazonaws.com/13.pdf",
         #"https://squad7.s3.amazonaws.com/1.pdf",
         #"https://squad7.s3.amazonaws.com/3.pdf",
@@ -27,7 +27,7 @@ url_list = [
         #"https://squad7.s3.amazonaws.com/transcript8.pdf",
         #"https://squad7.s3.amazonaws.com/transcript2.pdf",
         #"https://squad7.s3.amazonaws.com/transcript6.pdf",
-        "https://squad7.s3.amazonaws.com/transcript4.pdf",
-        "https://squad7.s3.amazonaws.com/transcript12.pdf",
-        "https://squad7.s3.amazonaws.com/transcript10.pdf"
+        #"https://squad7.s3.amazonaws.com/transcript4.pdf",
+        #"https://squad7.s3.amazonaws.com/transcript12.pdf",
+        #"https://squad7.s3.amazonaws.com/transcript10.pdf"
         ]
