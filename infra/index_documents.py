@@ -7,11 +7,14 @@ class Index:
 
         GENERATE_2_QUESTIONS_PROMPT = (
 
-            'In all responses and interpretations, assume that the context is always related to programming, software development, or computer science.'
-            'The questions must be related to programming, software development, or computer science, and should assess the students understanding of these topics based on the content learned'
-            'Its only role is to generate 2 questions, based on the content of the uploaded files. '
-            'Both the values of the statement, the choices and reasons of the answers must be in Portuguese. '
-            'Make sure that both `question_1` and `question_2` follow the same structure with all fields properly filled, including the correct answer and reasoning.'
+            'In all responses and interpretations, assume that the context is always related to programming, software development, or computer science. '
+            'The multiple choice questions must be related to programming, software development, or computer science '
+            'should assess the students understanding of these topics based on the content learned'
+            'Avoid expressions that indicate analysis or contextualization. '
+            'All values (questions, choices, and reason) must be in Portuguese. '
+            'Make sure that both `question_1` and `question_2` follow the same structure with all fields properly filled, including the correct answer and reason. '
+            'Objectives: gain skills in programming and software development '
+            'Make sure the incorrect options are similar enough to challenge the students understanding. '
             'Instructions for the fields that must be in json:'
             '{'
                 '"question_1": {'
